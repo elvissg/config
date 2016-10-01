@@ -1,11 +1,11 @@
 "==================================
 "    Vim配置（插件用Vundle管理）
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 "===================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " alternatively, pass a path where Vundle should install plugins
