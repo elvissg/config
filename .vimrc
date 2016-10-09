@@ -15,28 +15,32 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 
 Plugin 'gmarik/vundle'
+
+" 目录树
+Plugin 'scrooloose/nerdtree'
+" 语法提示
 Plugin 'scrooloose/syntastic'
+" alt映射
 Plugin 'bruno-/vim-alt-mappings'
+" 快速搜索
 Plugin 'kien/ctrlp.vim'
+" 配色
 Plugin 'tpope/vim-fugitive'
+" 快速注释
 Plugin 'tomtom/tcomment_vim'
-Plugin 'bling/vim-airline'
-Plugin 'benjaminwhite/Benokai'
-Plugin 'fsouza/go.vim'
-Plugin 'wting/rust.vim'
+" =对齐代码
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mtth/scratch.vim'
-Plugin 'greplace.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mcandre/Conque-Shell'
-Plugin 'elubow/cql-vim'
+" git状态
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+Plugin 'maksimr/vim-jsbeautify
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
 "PowerLine插件 状态栏增强展示
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'maksimr/vim-jsbeautify'
+
 
 set laststatus=2
 set t_Co=256
@@ -124,10 +128,16 @@ filetype indent on
 filetype plugin on
 "启动智能补全
 filetype plugin indent on
-map  :call JsBeautify()
+
+map <F3> :NERDTreeToggle<CR>
+map <c-f> :call JsBeautify()<cr>
 " or
-autocmd FileType javascript noremap  :call JsBeautify()
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
 " for html
-autocmd FileType html noremap  :call HtmlBeautify()
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
-autocmd FileType css noremap  :call CSSBeautify()
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
