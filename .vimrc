@@ -25,15 +25,14 @@ Plugin 'bruno-/vim-alt-mappings'
 " 快速搜索
 Plugin 'kien/ctrlp.vim'
 " 配色
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/fugitive'
 " 快速注释
 Plugin 'tomtom/tcomment_vim'
 " =对齐代码
 Plugin 'godlygeek/tabular'
 " git状态
-Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Plugin 'maksimr/vim-jsbeautify
+Plugin 'maksimr/vim-jsbeautify'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
