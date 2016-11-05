@@ -24,14 +24,15 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bruno-/vim-alt-mappings'
 " 快速搜索
 Plugin 'kien/ctrlp.vim'
-" 配色
+" git状态
 Plugin 'tpope/fugitive'
 " 快速注释
 Plugin 'tomtom/tcomment_vim'
 " =对齐代码
 Plugin 'godlygeek/tabular'
-" git状态
+" status/tabline
 Plugin 'bling/vim-airline'
+" Js格式化
 Plugin 'maksimr/vim-jsbeautify'
 
 " The following are examples of different formats supported.
