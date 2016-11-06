@@ -15,21 +15,12 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 
 Plugin 'gmarik/vundle'
-
 " 目录树
 Plugin 'scrooloose/nerdtree'
-" 语法提示
+" 语法错误定位
 Plugin 'scrooloose/syntastic'
-" alt映射
-Plugin 'bruno-/vim-alt-mappings'
 " 快速搜索
 Plugin 'kien/ctrlp.vim'
-" git状态
-Plugin 'tpope/fugitive'
-" 快速注释
-Plugin 'tomtom/tcomment_vim'
-" =对齐代码
-Plugin 'godlygeek/tabular'
 " status/tabline
 Plugin 'bling/vim-airline'
 " Js格式化
@@ -38,8 +29,6 @@ Plugin 'maksimr/vim-jsbeautify'
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
-"PowerLine插件 状态栏增强展示
-Bundle 'Lokaltog/vim-powerline'
 
 
 set laststatus=2
