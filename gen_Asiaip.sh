@@ -1,5 +1,5 @@
 #!/bin/sh
-#根据apnic生成亚洲的ip段,通过iptables控制不走ss(算了这个方案雪崩)
+#根据apnic生成亚洲的ip段,通过iptables控制亚洲地区ip不走ss
 if [ ! -f ips.list ];then
     wget http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest -O ips.list
 fi
@@ -20,6 +20,8 @@ echo "iptables -t nat -A SHADOWSOCKS -d 8.8.4.4 -j RETURN" >> "ss-iptables"
 
 
 sed -n '/ipv4/p' ips.list | awk 'BEGIN{
+#亚洲地区的ip段列表数量有点大，也可以改成只获取国内的
+#sed -n '/ipv4/{/CN/p}' ips.list | awk 'BEGIN{
 FS="|"
 }
 {
