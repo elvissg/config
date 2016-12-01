@@ -1,5 +1,5 @@
 #!/bin/sh
-#根据apnic生成亚洲的ip段,通过iptables控制不走ss
+#根据apnic生成亚洲的ip段,通过iptables控制不走ss(算了这个方案雪崩)
 if [ ! -f ips.list ];then
     wget http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest -O ips.list
 fi
