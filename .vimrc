@@ -4,6 +4,18 @@
 "===================================
 "=====================下面是Vundle必要配置
 set nocompatible "不兼容vi模式
+
+" Setting up Vundle - the best vim plugin manager
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
 filetype off
 set rtp+=~/.vim/bundle/vundle/ "路径初始化
 call vundle#rc()
@@ -21,7 +33,6 @@ Plugin 'scrooloose/nerdtree'
 map <F3> :NERDTreeToggle<CR>
 " 使用方法 F3
 "==============================
-
 
 " 快速搜索
 Plugin 'kien/ctrlp.vim'
@@ -50,6 +61,7 @@ filetype plugin indent on "required
 "To ignore plugin indent changes, instead use:
 "filetype plugin on
 
+map <F2> :set paste<CR>
 
 "配置backspace键工作方式
 set backspace=indent,eol,start
@@ -197,3 +209,11 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" Install plugins the first time vim runs
+
+if iCanHazVundle == 0
+    echo "Installing Plugins, please ignore key map error messages"
+    echo ""
+    :PluginInstall
+endif
