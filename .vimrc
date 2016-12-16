@@ -46,6 +46,9 @@ Plugin 'terryma/vim-multiple-cursors'
 " 一般使用 ctrl+n 编辑选中的词，c替换。
 " 多行编辑可以V选中，再ctrl+n i
 "=============================
+"
+"zen coding
+Plugin 'mattn/emmet-vim'
 
 " vim-scripts repos
 "http://vim-scripts.org/vim/scripts.html
@@ -61,7 +64,7 @@ filetype plugin indent on "required
 "To ignore plugin indent changes, instead use:
 "filetype plugin on
 
-map <F2> :set paste<CR>
+map <F2> :set paste
 
 "配置backspace键工作方式
 set backspace=indent,eol,start
@@ -86,6 +89,9 @@ set noswapfile
 "开启语法高亮功能
 syntax enable
 syntax on
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 
 "总显示最后一个窗口的状态行
 set laststatus=2 
@@ -170,7 +176,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
@@ -213,8 +218,9 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-" Install plugins the first time vim runs
+let g:user_emmet_leader_key='<C-F>'
 
+" Install plugins the first time vim runs
 if iCanHazVundle == 0
     echo "Installing Plugins, please ignore key map error messages"
     echo ""
