@@ -106,24 +106,24 @@ set ignorecase
 autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sw=4
 autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set ts=4
 autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set sts=4
-autocmd FileType javascript,html,css,xml set sw=2
-autocmd FileType javascript,html,css,xml set ts=2
-autocmd FileType javascript,html,css,xml set sts=2
+autocmd FileType php,python,c,java,perl,shell,bash,vim,ruby,cpp set expandtab
+autocmd FileType javascript,html,css,xml,ejs,stylus set sw=2
+autocmd FileType javascript,html,css,xml,ejs,stylus set ts=2
+autocmd FileType javascript,html,css,xml,ejs,stylus set sts=2
+autocmd FileType javascript,html,css,xml,ejs,stylus set expandtab
 set sw=4
 set ts=4
 set sts=4
 set ai
 set expandtab
 
-" 设置ejs同html语法高亮
-" autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufRead *.ejs set filetype=ejs "需要下载ejs到.vim/syntax/
 autocmd BufNewFile,BufRead *.styl set filetype=stylus 
 
 
 "设置编码方式
 set encoding=utf-8
-"自动判断编码时 依次尝试一下编码
+"自动判断编码时 依次尝试以下编码
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 
@@ -219,6 +219,44 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 let g:user_emmet_leader_key='<C-F>'
+
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {<CR>}<Esc>O
+inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap ] <c-r>=ClosePair(']')<CR>
+inoremap } <c-r>=CloseBracket()<CR>
+inoremap " <c-r>=QuoteDelim('"')<CR>
+inoremap ' <c-r>=QuoteDelim("'")<CR>
+
+function ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endf
+
+function CloseBracket()
+	if match(getline(line('.') + 1), '\s*}') < 0
+		return "\<CR>}"
+	else
+		return "\<Esc>j0f}a"
+	endif
+endf
+
+function QuoteDelim(char)
+	let line = getline('.')
+	let col = col('.')
+	if line[col - 2] == "\\"
+		return a:char
+	elseif line[col - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char.a:char."\<Esc>i"
+	endif
+endf
 
 " Install plugins the first time vim runs
 if iCanHazVundle == 0
